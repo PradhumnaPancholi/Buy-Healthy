@@ -3,6 +3,7 @@ import { AngularFireModule } from '@angular/fire'
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { AngularFirestore } from '@angular/fire/firestore'
+import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { environment } from 'src/environments/environment'
 
@@ -21,11 +22,12 @@ import { LoginComponent } from './login/login.component'
 import { MyOrderComponent } from './my-order/my-order.component'
 import { NavbarComponent } from './navbar/navbar.component'
 import { OrderSuccessComponent } from './order-success/order-success.component'
+import { ProductService } from './product.service'
 import { ProductsComponent } from './products/products.component'
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
 import { UserService } from './user.service'
 
-@NgModule({
+  @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -45,7 +47,8 @@ import { UserService } from './user.service'
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   providers: [
     AuthService,
@@ -53,6 +56,7 @@ import { UserService } from './user.service'
     AuthGuardService,
     UserService,
     CategoryService,
+    ProductService,
     AngularFirestore
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { CategoryService } from 'src/app/category.service'
+import { ProductService } from 'src/app/product.service'
 
 @Component({
   selector: 'app-products-form',
@@ -11,7 +12,7 @@ export class ProductsFormComponent implements OnInit {
   categories;
   tempCategories;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private productService: ProductService) {
     this.categories = this.categoryService.getCategories();
     console.log('category observalble', this.categories);
   }
@@ -19,4 +20,7 @@ export class ProductsFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  save(product){
+    this.productService.create(product)
+  }
 }
