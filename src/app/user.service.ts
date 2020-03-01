@@ -7,13 +7,19 @@ import * as firebase from 'firebase'
 })
 export class UserService {
 
-  constructor(private firestoreDB: AngularFirestore) { }
+  constructor(private firestoreDB: AngularFirestore) {
+  }
 
   //to save user data into a collection//
   save(user: firebase.User){
-    this.firestoreDB.collection('users').add({
+    this.firestoreDB.doc('/users/'+user.uid).set({
       name: user.displayName,
       email: user.email
     })
+
+    // this.firestoreDB.collection('users').add({
+    //   name: user.displayName,
+    //   email: user.email
+    // })
   }
 }
