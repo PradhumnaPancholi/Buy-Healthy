@@ -9,6 +9,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { AuthGuardService } from './auth-guard.service'
 import { AuthService } from './auth.service'
 import { CheckOutComponent } from './check-out/check-out.component'
 import { HomeComponent } from './home/home.component'
@@ -41,7 +42,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
     AngularFireAuthModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
