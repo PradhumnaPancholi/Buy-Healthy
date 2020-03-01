@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component'
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component'
+import { ProductsFormComponent } from './admin/products-form/products-form.component'
 import { AuthGuardService } from './auth-guard.service'
 import { CheckOutComponent } from './check-out/check-out.component'
 import { HomeComponent } from './home/home.component'
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'my/orders', component: MyOrderComponent, canActivate: [AuthGuardService]},
   // admin routes//
   { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
-  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]}
+  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/products/new', component: ProductsFormComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

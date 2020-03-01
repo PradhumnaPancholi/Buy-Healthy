@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment'
 import { AdminAuthGuardService } from './admin-auth-guard.service'
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component'
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component'
+import { ProductsFormComponent } from './admin/products-form/products-form.component'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { AuthGuardService } from './auth-guard.service'
@@ -35,7 +36,8 @@ import { UserService } from './user.service'
     MyOrderComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    ProductsFormComponent
   ],
   imports: [
     BrowserModule,
