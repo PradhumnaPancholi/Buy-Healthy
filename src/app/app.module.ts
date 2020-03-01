@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { AngularFireModule } from '@angular/fire'
+import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { BrowserModule } from '@angular/platform-browser'
 import { environment } from 'src/environments/environment'
@@ -36,6 +37,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
