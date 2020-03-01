@@ -16,10 +16,9 @@ export class UserService {
       name: user.displayName,
       email: user.email
     })
+  }
 
-    // this.firestoreDB.collection('users').add({
-    //   name: user.displayName,
-    //   email: user.email
-    // })
+  get(uid: string){
+    return this.firestoreDB.collection('users').doc(uid)
   }
 }

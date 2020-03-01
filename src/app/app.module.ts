@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { BrowserModule } from '@angular/platform-browser'
 import { environment } from 'src/environments/environment'
 
+import { AdminAuthGuardService } from './admin-auth-guard.service'
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component'
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component'
 import { AppRoutingModule } from './app-routing.module'
@@ -45,6 +46,7 @@ import { UserService } from './user.service'
   ],
   providers: [
     AuthService,
+    AdminAuthGuardService,
     AuthGuardService,
     UserService,
     AngularFirestore
