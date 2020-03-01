@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFirestore } from '@angular/fire/firestore'
 import { BrowserModule } from '@angular/platform-browser'
 import { environment } from 'src/environments/environment'
 
@@ -39,13 +40,14 @@ import { UserService } from './user.service'
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })

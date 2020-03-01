@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 
 import { AuthService } from './auth.service'
+import { UserService } from './user.service'
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,13 @@ import { AuthService } from './auth.service'
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  constructor(private auth: AuthService, router: Router){
+  constructor(private userService: UserService, private auth: AuthService, router: Router){
     auth.currentUser$.subscribe(user => {
       if (user) {
+        //save user data into firestore collection//
+        userService.save(user)
+
+        //redirect to returnurl stored in local storage//
         let returnUrl = localStorage.getItem('returnUrl')
         router.navigateByUrl(returnUrl)
       }

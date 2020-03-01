@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { AngularFireDatabase } from '@angular/fire/database'
+import { AngularFirestore } from '@angular/fire/firestore'
 import * as firebase from 'firebase'
 
 @Injectable({
@@ -7,11 +7,11 @@ import * as firebase from 'firebase'
 })
 export class UserService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private firestoreDB: AngularFirestore) { }
 
   //to save user data into a collection//
   save(user: firebase.User){
-    this.db.object('/users/' + user.uid).update({
+    this.firestoreDB.collection('users').add({
       name: user.displayName,
       email: user.email
     })
