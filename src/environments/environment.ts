@@ -11,7 +11,12 @@ export const environment = {
     projectId: "eathealthy-2f089",
     storageBucket: "eathealthy-2f089.appspot.com",
     messagingSenderId: "510983253654",
-    appId: "1:510983253654:web:1238c0827c828039449cb7"
+    appId: "1:510983253654:web:1238c0827c828039449cb7",
+
+    "rules": {
+      ".read": true,
+      ".write": true
+    }
   }
 };
 
