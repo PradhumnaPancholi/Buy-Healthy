@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { Router } from '@angular/router'
+
+import { AuthService } from './auth.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'eat-healthy';
+  constructor(private auth: AuthService, router: Router){
+    auth.currentUser$.subscribe(user => {
+      if (user) {
+        let returnUrl = localStorage.getItem('returnUrl')
+        router.navigateByUrl(returnUrl)
+      }
+    })
+  }
 }

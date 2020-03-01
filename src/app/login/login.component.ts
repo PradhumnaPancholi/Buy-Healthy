@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 
 import { AuthService } from '../auth.service'
 
@@ -9,7 +10,7 @@ import { AuthService } from '../auth.service'
 })
 export class LoginComponent {
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private route: ActivatedRoute) {
 
   }
 
@@ -17,6 +18,11 @@ export class LoginComponent {
   }
 
   login(){
+    //get return url
+    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/'
+    //save into local storage//
+    localStorage.setItem('returnUrl', returnUrl)
+
     this.auth.login()
   }
 }

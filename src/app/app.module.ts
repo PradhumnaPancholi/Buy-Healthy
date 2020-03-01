@@ -19,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component'
 import { OrderSuccessComponent } from './order-success/order-success.component'
 import { ProductsComponent } from './products/products.component'
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
+import { UserService } from './user.service'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
