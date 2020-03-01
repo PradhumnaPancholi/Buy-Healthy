@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { AuthGuardService } from './auth-guard.service'
 import { AuthService } from './auth.service'
+import { CategoryService } from './category.service'
 import { CheckOutComponent } from './check-out/check-out.component'
 import { HomeComponent } from './home/home.component'
 import { LoginComponent } from './login/login.component'
@@ -51,6 +52,7 @@ import { UserService } from './user.service'
     AdminAuthGuardService,
     AuthGuardService,
     UserService,
+    CategoryService,
     AngularFirestore
   ],
   bootstrap: [AppComponent]
