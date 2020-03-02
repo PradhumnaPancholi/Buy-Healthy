@@ -9,12 +9,10 @@ import { ProductService } from 'src/app/product.service'
 })
 export class ProductsFormComponent implements OnInit {
 
-  categories;
-  tempCategories;
+  categories$;
 
   constructor(private categoryService: CategoryService, private productService: ProductService) {
-    this.categories = this.categoryService.getCategories();
-    console.log('category observalble', this.categories);
+    this.categories$ = this.categoryService.getCategories();
   }
 
   ngOnInit(): void {
