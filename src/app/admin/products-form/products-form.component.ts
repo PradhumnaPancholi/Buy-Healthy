@@ -42,8 +42,8 @@ export class ProductsFormComponent implements OnInit {
     //else create/add new product//
     else this.productService.create(product)
 
-  //redirect ot products page//
-  this.router.navigateByUrl['/admin/products']
+    //redirect ot products page//
+    this.router.navigate(['/admin/products'])
   }
 
 }
