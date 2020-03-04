@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
+import { Product } from 'src/app/model/product'
 import { ProductService } from 'src/app/product.service'
 
 @Component({
@@ -8,12 +10,21 @@ import { ProductService } from 'src/app/product.service'
 })
 export class AdminProductsComponent implements OnInit {
 
-  products$;
+  products : Product[]
+  subscription : Subscription
   constructor(private productService: ProductService) {
-    this.products$ = this.productService.getAll()
+    this.productService.getAll()
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.subscription = this.productService.getAll().subscribe(data => {
+      this.products = data.map(e => {
+          return {
+            id: e.payload.key,
+            ...e.payload.toJSON()
+          } as Product;
+      });
+    });
   }
 
 }
