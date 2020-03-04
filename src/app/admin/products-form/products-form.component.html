@@ -1,4 +1,4 @@
-<!-- <div class="container product-creation-page">
+<div class="container product-creation-page">
   <div class="row">
     <div class="col-md-6">
       <form class='container' #f='ngForm' (ngSubmit)='save(f.value)'>
@@ -35,7 +35,7 @@
       </form>
     </div>
     <div class="col-md-6">
-      <div class="card" style="width: 18rem;">
+      <div *ngIf='product.title' class="card" style="width: 18rem;">
         <img class="card-img-top" [src]='product.imageUrl' *ngIf='product.imageUrl'>
         <div class="card-body">
           <h5 class="card-title">{{product.title}}</h5>
@@ -45,4 +45,4 @@
     </div>
   </div>
 </div>
- -->
+
