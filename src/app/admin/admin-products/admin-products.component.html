@@ -1,7 +1,21 @@
 <div class="container">
+  <!-- new product button -->
   <p>
     <a class='btn btn-primary' routerLink='/admin/products/new'>New Product</a>
   </p>
+
+  <!-- search bar -->
+  <div>
+    <input
+      #query
+      (keyup)='filter(query.value)'
+      type='text'
+      class='form-control'
+      placeholder='Search...'
+    >
+  </div>
+
+  <!-- to display produc list// -->
   <table class='table'>
     <thead>
       <tr>

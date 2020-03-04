@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { CategoryService } from 'src/app/category.service'
-import { Product } from 'src/app/model/product'
 import { ProductService } from 'src/app/product.service'
 
 @Component({
@@ -12,7 +11,7 @@ import { ProductService } from 'src/app/product.service'
 export class ProductsFormComponent implements OnInit {
 
   categories$
-  product : {} | Product
+  product : {}
   id
 
   constructor(
