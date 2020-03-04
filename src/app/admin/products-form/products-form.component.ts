@@ -27,7 +27,6 @@ export class ProductsFormComponent implements OnInit {
     // if id exist, fetch product//
     if (this.id) {
       this.productService.get(this.id).subscribe(p => {
-        console.log('p',p)
         this.product = p
       })
     }
@@ -44,6 +43,14 @@ export class ProductsFormComponent implements OnInit {
 
     //redirect ot products page//
     this.router.navigate(['/admin/products'])
+  }
+
+  delete(){
+    if(confirm('Are you sure you want to delete this product?')) {
+      this.productService.delete(this.id)
+      //redirect ot products page//
+      this.router.navigate(['/admin/products'])
+    }
   }
 
 }
