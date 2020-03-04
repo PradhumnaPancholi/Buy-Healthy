@@ -12,14 +12,16 @@ import { UserService } from './user.service'
 export class AppComponent {
   constructor(private userService: UserService, private auth: AuthService, router: Router){
     auth.currentUser$.subscribe(user => {
-      if (user) {
-        //save user data into firestore collection//
-        userService.save(user)
+      if (!user) return
+      //save user data into firestore collection//
+      userService.save(user)
 
-        //redirect to returnurl stored in local storage//
-        let returnUrl = localStorage.getItem('returnUrl')
-        router.navigateByUrl(returnUrl)
-      }
+      //redirect to returnurl stored in local storage//
+      let returnUrl = localStorage.getItem('returnUrl')
+      if(!returnUrl) return
+
+      localStorage.removeItem('removeUrl')
+      router.navigateByUrl(returnUrl)
     })
   }
 }

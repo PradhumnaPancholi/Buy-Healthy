@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/product.service'
 export class AdminProductsComponent implements OnInit, OnDestroy {
 
   products : Product[]
-  filteredProducts: any[]
+  filteredProducts: Product[]
   subscription : Subscription
   constructor(private productService: ProductService) { }
 
