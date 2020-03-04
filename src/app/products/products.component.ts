@@ -12,7 +12,7 @@ import { ProductService } from '../product.service'
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
-  products : Product[]
+  products: Product[]
   productsSubscription : Subscription
   categories$
 
@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private categoryService: CategoryService) {
       this.categories$ = this.categoryService.getCategories()
-    }
+  }
 
   ngOnInit(){
     this.productsSubscription =  this.productService.getAll().subscribe(data => {
