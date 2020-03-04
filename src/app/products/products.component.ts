@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs'
 
 import { CategoryService } from '../category.service'
@@ -15,11 +16,19 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products: Product[]
   productsSubscription : Subscription
   categories$
+  category: string
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private route: ActivatedRoute) {
       this.categories$ = this.categoryService.getCategories()
+
+      //getting selected catgory//
+      route.queryParamMap.subscribe(params => {
+        this.category = params.get('category')
+        console.log('selectd category', this.category)
+      })
   }
 
   ngOnInit(){

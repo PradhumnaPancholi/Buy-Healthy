@@ -5,7 +5,8 @@
         *ngFor='let c of categories$ | async'
         routerLink='/'
         [queryParams]='{ category: c.name}'
-        class='list-group-item list-group-item-action'>
+        class='list-group-item list-group-item-action'
+        [class.active] = 'category  === c.name'>
         {{c.name}}
       </a>
     </div>
