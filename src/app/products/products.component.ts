@@ -37,7 +37,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         return route.queryParamMap.subscribe(params  => {
           this.category = params.get('category')
           console.log('selected category', this.category)
-
+        //filtering products for given category//
           this.filteredProducts = (this.category) ?
           this.products.filter(p => p.category === this.category.toLowerCase()) :
           this.products;
