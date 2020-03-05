@@ -16,13 +16,7 @@ export class ProductCardComponent implements OnInit {
   constructor(private shoppingCartService: ShoppingCartService) { }
 
   addToCart(product: Product) {
-    let cartID = localStorage.getItem('cartID')
-    if (!cartID) {
-      this.shoppingCartService.create().then(result => {
-        localStorage.setItem('cartID', result.key)
-      })
-    }
-
+    this.shoppingCartService.getOrCreate()
   }
 
   ngOnInit(): void {
