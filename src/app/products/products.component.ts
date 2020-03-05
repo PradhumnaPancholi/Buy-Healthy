@@ -14,6 +14,7 @@ import { ProductService } from '../product.service'
 export class ProductsComponent implements OnInit, OnDestroy {
 
   products: Product[]
+  filteredProducts: Product[]
   productsSubscription : Subscription
   categories$
   category: string
@@ -22,24 +23,31 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private categoryService: CategoryService,
     private route: ActivatedRoute) {
+      //getting aall categoris//
       this.categories$ = this.categoryService.getCategories()
+      //getting all products//
+      this.productsSubscription =  this.productService.getAll().subscribe(data => {
+        this.products = data.map(e => {
+            return {
+              id: e.payload.key,
+              ...e.payload.toJSON()
+            } as Product;
+        });
+        // getting selected categories//
+        return route.queryParamMap.subscribe(params  => {
+          this.category = params.get('category')
+          console.log('selected category', this.category)
 
-      //getting selected catgory//
-      route.queryParamMap.subscribe(params => {
-        this.category = params.get('category')
-        console.log('selectd category', this.category)
+          this.filteredProducts = (this.category) ?
+          this.products.filter(p => p.category === this.category.toLowerCase()) :
+          this.products;
+          console.log('filtered: ', this.filteredProducts)
+        })
       })
   }
 
   ngOnInit(){
-    this.productsSubscription =  this.productService.getAll().subscribe(data => {
-      this.products = data.map(e => {
-          return {
-            id: e.payload.key,
-            ...e.payload.toJSON()
-          } as Product;
-      });
-    });
+
   }
 
   ngOnDestroy(){
