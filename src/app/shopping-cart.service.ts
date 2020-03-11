@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/take'
+
 import { Injectable } from '@angular/core'
 import { AngularFireDatabase } from '@angular/fire/database'
 
@@ -15,11 +17,21 @@ export class ShoppingCartService {
   }
 
   async addToCart(product: Product){
-    console.log('from sc servic')
+    console.log('from sc service')
     let cartId = await this.getOrCreateCartId()
-    let item$ = this.getItem(cartId, product.id)
-    item$.update({product: product, quantity: 1})
+    let selectedItem = this.getItem(cartId, product.id)
+    let item$ = selectedItem.snapshotChanges()
+    item$.take(1).subscribe( item => {
+      selectedItem.update({product: product, quantity: 1})
+    })
   }
+
+  // async addToCart(product: Product){
+  //   console.log('from sc servic')
+  //   let cartId = await this.getOrCreateCartId()
+  //   let item$ = this.getItem(cartId, product.id)
+  //   item$.update({product: product, quantity: 1})
+  // }
 
   private getCart(cartId: string) {
     return this.db.object('/shopping-carts/' + cartId)
@@ -36,7 +48,7 @@ export class ShoppingCartService {
   }
 
   private create(){
-    return this.db.list('/shooping-carts').push({
+    return this.db.list('/shooping-carts/').push({
       dateCreated: new Date().getTime()
     })
   }
