@@ -27,7 +27,7 @@
     "firebase-tools": "^7.0.2",
     "g": "^2.0.1",
     "jquery": "^3.4.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "popper": "^1.0.1",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.5.2",
